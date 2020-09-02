@@ -15,8 +15,15 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
+import CheckCircleOutlined from '@material-ui/icons/CheckCircleOutlined';
+import CalendarToday from '@material-ui/icons/CalendarToday';
+import CalendarViewDayOutlined from '@material-ui/icons/CalendarViewDayOutlined';
+
+import {BrowserRouter as Router ,Route , Switch, Link} from 'react-router-dom'
+
+import Tasks from './Tasks'
+import Events from './Events'
+import Calendar from './Calendar'
 
 const drawerWidth = 240;
 
@@ -80,6 +87,10 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     padding: theme.spacing(3),
   },
+  LinkText : {
+      textDecoration : 'inherit',
+      color : 'inherit'
+  }
 }));
 
 export default function MiniDrawer() {
@@ -96,6 +107,8 @@ export default function MiniDrawer() {
   };
 
   return (
+
+    <Router>
     <div className={classes.root}>
       <CssBaseline />
       <AppBar
@@ -117,7 +130,7 @@ export default function MiniDrawer() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap>
-            Mini variant drawer
+            Calendar
           </Typography>
         </Toolbar>
       </AppBar>
@@ -141,27 +154,57 @@ export default function MiniDrawer() {
         </div>
         <Divider />
         <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
+            <Link to="/tasks">
+            <ListItem>
+              <ListItemIcon>
+              <CheckCircleOutlined/>
+              </ListItemIcon>
+              <ListItemText> 
+                  <Typography className={classes.LinkText}>Tasks</Typography>
+              </ListItemText>
             </ListItem>
-          ))}
-        </List>
-        <Divider />
-        <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
+            </Link>
+            <Link to="/calendar">
+            <ListItem>
+              <ListItemIcon>
+              <CalendarToday/>
+              </ListItemIcon>
+              <ListItemText> 
+                  <Typography>Calendar</Typography>
+              </ListItemText>
             </ListItem>
-          ))}
+            </Link>
+            <Link to="/events">
+            <ListItem>
+              <ListItemIcon>
+              <CalendarViewDayOutlined/>
+              </ListItemIcon>
+              <ListItemText> 
+                  <Typography>Event</Typography>
+              </ListItemText>
+            </ListItem>
+            </Link>
         </List>
       </Drawer>
       <main className={classes.content}>
         <div className={classes.toolbar} />
+        <Switch>
+          <Route path="/tasks">
+            <Tasks />
+          </Route>
+          <Route path="/events">
+            <Events />
+          </Route>
+          <Route path="/" exact>
+            <Tasks />
+          </Route>
+          <Route path="/calendar">
+            <Calendar />
+          </Route>
+        </Switch>
       </main>
     </div>
+    </Router>
   );
 }
 
