@@ -17,8 +17,8 @@ const useStyles = makeStyles({
     justifyContent: "flex-start",
   },
   content: {
-    display: "flex",
-    flexDirection: "row",
+    display: "block",
+    flexDirection: "column",
   },
   time: {
     fontSize: 14,
@@ -34,8 +34,8 @@ export default function Task(props) {
   return (
     <Card className={classes.root} variant="outlined">
       <CardContent className={classes.content}>
-        <Typography className={classes.title}>{props.t.task}</Typography>
-        <Typography className={classes.time}>{props.t.time}</Typography>
+        <Typography className={classes.title}>{props.task.task}</Typography>
+        <Typography className={classes.time}>{props.task.time}</Typography>
       </CardContent>
     </Card>
   );
