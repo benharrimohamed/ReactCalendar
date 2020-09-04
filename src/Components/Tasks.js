@@ -1,40 +1,16 @@
-import React from 'react'
-import {useState, useEffect} from 'react' 
-import { Typography,Button,Grid} from '@material-ui/core'
-import AddTask  from './Tasks/AddTask'
+import React from "react";
+import { useState, useEffect } from "react";
+import { Typography, Button, Grid } from "@material-ui/core";
+import Task from "./Tasks/Task";
+import NoTasks from "./Tasks/NoTasks";
 
+export default function Tasks() {
+  const [tasks, setTasks] = useState([
+    { id: 1, task: "wake up", time: "07:30" },
+    { id: 2, task: "do somthing 2", time: "07:30" },
+    { id: 3, task: "Do somthing 3", time: "08:30" },
+    { id: 4, task: "do somthing 4", time: "09:30" },
+  ]);
 
-function Tasks ()
-{
-
-         const [open , setOpen] = useState (false)
-         const handleOpen =  () => {
-             setOpen(true); 
-             }
-        const handleClose = () => {
-            setOpen(false)
-        }
-        return (
-            <Grid style={{
-                position: 'absolute', left: '50%', top: '50%',
-                transform: 'translate(-50%, -50%)',
-            }}>
-             <Grid item> 
-            <img height="250" width="500" src="https://images.ctfassets.net/8j5aqoy0ts8s/3yPkstfPd9fvCglHhaKpa1/379fb68bee397c5b67b32887977a2ce9/spot-hero.png?w=1050&h=623&q=85&fm=webp" />
-            </Grid> 
-            <Grid item>  
-            <Typography>Keep your personal tasks here,</Typography>
-            <Typography>And we'll remind you in advance </Typography>
-            </Grid>
-            <Grid item> 
-            <Button onClick={handleOpen} variant="outlined" size="large" color="primary" >NEW TASK</Button>
-            <AddTask open={open} onClose={handleClose}/>
-            </Grid> 
-            </Grid>
-        )
-    
+  return tasks.length === 0 ? <NoTasks /> : tasks.map((t) => <Task task={t} />);
 }
-
-export default Tasks ;
-
-
