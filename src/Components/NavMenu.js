@@ -83,8 +83,12 @@ const useStyles = makeStyles((theme) => ({
     ...theme.mixins.toolbar,
   },
   content: {
-    flexGrow: 1,
-    padding: theme.spacing(3),
+    display: "flex",
+    padding: theme.spacing(2),
+    flexDirection: "column",
+    width: "100%",
+    alignItems: "center",
+    justifyContent: "center",
   },
   LinkText: {
     textDecoration: "inherit",

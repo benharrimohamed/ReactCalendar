@@ -1,28 +1,27 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
-import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import CheckBoxIcon from "@material-ui/icons/CheckBox";
-import Checkbox from "@material-ui/core/Checkbox";
 
 const useStyles = makeStyles({
   root: {
-    minWidth: 500,
-    margin: 3,
+    minWidth: "50%",
+    maxWidth: "50%",
+    margin: 5,
   },
   title: {
-    fontSize: 15,
+    fontSize: 20,
+    justifyContent: "flex-start",
   },
   content: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "left",
+    display: "block",
+    flexDirection: "column",
   },
   time: {
     fontSize: 14,
+    justifyContent: "flex-end",
+    alignSelf: "right",
   },
 });
 
@@ -32,11 +31,10 @@ export default function Task(props) {
 
   return (
     <Card className={classes.root} variant="outlined">
-      <div className={classes.content}>
-        <Checkbox onChange={props.task.handleComplete} color="primary" />
+      <CardContent className={classes.content}>
         <Typography className={classes.title}>{props.task.task}</Typography>
         <Typography className={classes.time}>{props.task.time}</Typography>
-      </div>
+      </CardContent>
     </Card>
   );
 }
