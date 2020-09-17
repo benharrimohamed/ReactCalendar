@@ -20,9 +20,9 @@ import CalendarToday from "@material-ui/icons/CalendarToday";
 import CalendarViewDayOutlined from "@material-ui/icons/CalendarViewDayOutlined";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 
-import Tasks from "./Tasks";
-import Events from "./Events";
-import Calendar from "./Calendar";
+import Tasks from "./TaskComponents/Tasks";
+import Events from "./EventComponents/Events";
+import Calendar from "./CalendarComponents/Calendar";
 
 const drawerWidth = 240;
 

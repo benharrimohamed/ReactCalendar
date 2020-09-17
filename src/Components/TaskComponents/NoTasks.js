@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { Typography, Button, Grid } from "@material-ui/core";
 import AddTask from "./AddTask";
 
-function NoTasks() {
+export default function NoTasks() {
   const [open, setOpen] = useState(false);
   const handleOpen = () => {
     setOpen(true);
@@ -45,5 +45,3 @@ function NoTasks() {
     </Grid>
   );
 }
-
-export default NoTasks;
