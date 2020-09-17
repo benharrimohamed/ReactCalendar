@@ -31,7 +31,7 @@ const useStyles = makeStyles({
 
 export default function Task(props) {
   const classes = useStyles();
-  const { id, task, completed } = props.task;
+  const { id, task, completed , handleDeleteTask } = props.task;
   const CustomCheckBox = (
     <CheckBox
       icon={<CircleUnchecked />}
@@ -57,7 +57,7 @@ export default function Task(props) {
           <Edit />
         </IconButton>
         <IconButton color="primary" component="span">
-          <DeleteIcon />
+          <DeleteIcon onClick={handleDeleteTask}/>
         </IconButton>
       </AccordionActions>
     </Accordion>

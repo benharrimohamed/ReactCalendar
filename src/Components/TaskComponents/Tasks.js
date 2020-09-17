@@ -6,6 +6,8 @@ import { makeStyles } from "@material-ui/core";
 import TaskCounter from "./TaskCounter";
 
 export default function Tasks() {
+  
+  
   const [tasks, setTasks] = useState([
     {
       id: 1,
@@ -27,6 +29,11 @@ export default function Tasks() {
     },
   ]);
 
+  const deleteTask = () => {
+     
+    console.log('hello')
+  }
+
   const completedTask = (e) => {
     const id = e.target.id;
     tasks.map((item) => {
@@ -46,7 +53,7 @@ export default function Tasks() {
           counter={tasks.length}
         />
         {tasks.map((item) => (
-          <Task key={item.id} task={item} completedTask={completedTask} />
+          <Task key={item.id} task={item} completedTask={completedTask} handleDeleteTask={deleteTask}/>
         ))}
       </div>
       <div>
